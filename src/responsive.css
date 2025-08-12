@@ -1,15 +1,12 @@
-/* Mobil versiya */
 @media (max-width: 768px) {
-    /* Navbar */
     .nav-links {
-      display: none; /* Mobil menyu uchun keyin toggle qilsa bo‘ladi */
+      display: none;
     }
     
     .auth-buttons {
       display: none;
     }
   
-    /* Hero section */
     .hero {
       flex-direction: column-reverse;
       text-align: center;
