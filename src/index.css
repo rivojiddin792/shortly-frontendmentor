@@ -106,7 +106,6 @@ img {
     width: 500px;
 }
 
-/* Default button hover */
 .signup:hover,
 .btn-get-started:hover {
     background-color: hsl(180, 66%, 60%);
