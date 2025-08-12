@@ -1,0 +1,44 @@
+/* Mobil versiya */
+@media (max-width: 768px) {
+    /* Navbar */
+    .nav-links {
+      display: none; /* Mobil menyu uchun keyin toggle qilsa bo‘ladi */
+    }
+    
+    .auth-buttons {
+      display: none;
+    }
+  
+    /* Hero section */
+    .hero {
+      flex-direction: column-reverse;
+      text-align: center;
+    }
+  
+    .hero-image img {
+      width: 100%;
+      max-width: 350px;
+    }
+  
+    .hero-text h1 {
+      font-size: 2rem;
+    }
+  
+    .hero-text p {
+      font-size: 1rem;
+    }
+  
+    .btn-get-started {
+      margin-top: 1rem;
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .hero-text h1 {
+      font-size: 2.5rem;
+    }
+    
+    .hero-image img {
+      width: 400px;
+    }
+  }
