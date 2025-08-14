@@ -1,59 +1,94 @@
 import { useState } from "react";
+import "../styles/LinkShortener.css";
 
 export default function LinkShortener() {
-  const [input, setInput] = useState("");
-  const [shortLinks, setShortLinks] = useState([]);
-  const [copiedIndex, setCopiedIndex] = useState(null);
+  const [url, setUrl] = useState("");
+  const [links, setLinks] = useState([
+    {
+      original: "https://www.frontendmentor.io",
+      short: "https://reLink/k4lKyk",
+      copied: false
+    },
+    {
+      original: "https://twitter.com/frontendmentor",
+      short: "https://reLink/gxOXp9",
+      copied: true
+    },
+    {
+      original: "https://www.linkedin.com/company/frontend-mentor",
+      short: "https://reLink/gob3X9",
+      copied: false
+    }
+  ]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleShorten = async () => {
-    if (!input.trim()) return;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!url.trim()) {
+      setError("Please add a link");
+      return;
+    }
+    
+    setLoading(true);
     try {
-      const res = await fetch(`https://api.shrtco.de/v2/shorten?url=${input}`);
-      const data = await res.json();
-      if (data.ok) {
-        setShortLinks([
-          ...shortLinks,
-          {
-            original: input,
-            short: data.result.full_short_link,
-          },
-        ]);
-        setInput("");
-      }
+      // API call would go here
+      const newLink = {
+        original: url,
+        short: `https://reLink/${Math.random().toString(36).substring(2, 8)}`,
+        copied: false
+      };
+      setLinks([newLink, ...links]);
+      setUrl("");
+      setError("");
     } catch (err) {
-      console.error(err);
+      setError("Failed to shorten link");
+    } finally {
+      setLoading(false);
     }
   };
 
-  const handleCopy = (link, index) => {
-    navigator.clipboard.writeText(link);
-    setCopiedIndex(index);
-    setTimeout(() => setCopiedIndex(null), 2000);
+  const handleCopy = (index) => {
+    navigator.clipboard.writeText(links[index].short);
+    const updatedLinks = links.map((link, i) => ({
+      ...link,
+      copied: i === index
+    }));
+    setLinks(updatedLinks);
   };
 
   return (
-    <div className="link-shortener">
-      <div className="input-area">
-        <input
-          type="text"
-          placeholder="Shorten a link here..."
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-        />
-        <button onClick={handleShorten}>Shorten It!</button>
-      </div>
+    <div className="link-shortener-container">
+      <h1>Shorten a link here...</h1>
+      
+      <form onSubmit={handleSubmit} className="shorten-form">
+        <div className="input-group">
+          <input
+            type="text"
+            placeholder="Shorten at: Please add a link"
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+          />
+          {error && <p className="error-message">{error}</p>}
+        </div>
+        <button type="submit" disabled={loading}>
+          {loading ? "Shortening..." : "Shorten"}
+        </button>
+      </form>
 
       <div className="links-list">
-        {shortLinks.map((link, index) => (
-          <div key={index} className="link-item">
-            <span className="original">{link.original}</span>
-            <span className="short">{link.short}</span>
-            <button
-              onClick={() => handleCopy(link.short, index)}
-              className={copiedIndex === index ? "copied" : ""}
-            >
-              {copiedIndex === index ? "Copied!" : "Copy"}
-            </button>
+        {links.map((link, index) => (
+          <div key={index} className="link-card">
+            <p className="original-url">{link.original}</p>
+            <div className="short-url-group">
+              <a href={link.short} className="short-url">{link.short}</a>
+              <button
+                onClick={() => handleCopy(index)}
+                className={link.copied ? "copied" : ""}
+              >
+                {link.copied ? "Copied!" : "Copy"}
+              </button>
+            </div>
           </div>
         ))}
       </div>

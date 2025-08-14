@@ -1,110 +1,107 @@
-.shortener-container {
-  background: hsl(257, 27%, 26%);
-  padding: 2rem;
-  border-radius: 10px;
-  margin-top: -4rem;
-  position: relative;
-  z-index: 2;
+.shortener-component {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #f5f3ff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
+.shortener-component h2 {
+  color: #4c1d95;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
 
-.shortener-form {
+.shortener-component form {
   display: flex;
   gap: 1rem;
-  flex-wrap: wrap;
+  margin-bottom: 1rem;
 }
 
-.shortener-form input {
+.shortener-component input {
   flex: 1;
   padding: 0.8rem 1rem;
-  border-radius: 5px;
-  border: none;
+  border: 2px solid #ddd;
+  border-radius: 8px;
   font-size: 1rem;
+}
+
+.shortener-component input:focus {
   outline: none;
+  border-color: #6b46c1;
 }
 
-.shortener-form button {
-  background: hsl(180, 66%, 49%);
+.shortener-component button {
+  background-color: #6b46c1;
   color: white;
-  padding: 0.8rem 1.5rem;
   border: none;
-  border-radius: 5px;
-  font-size: 1rem;
+  border-radius: 8px;
+  padding: 0 1.8rem;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background-color 0.2s;
 }
 
-.shortener-form button:hover {
-  background: hsl(180, 66%, 40%);
+.shortener-component button:hover {
+  background-color: #5d3aac;
 }
 
-.error-message {
-  color: hsl(0, 87%, 67%);
-  font-size: 0.85rem;
-  margin-top: 0.5rem;
+.shortener-component button:disabled {
+  background-color: #a78bfa;
+  cursor: not-allowed;
 }
 
+.error {
+  color: #ef4444;
+  font-size: 0.9rem;
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+}
 
-.shortened-link-card {
-  background: white;
-  border-radius: 5px;
-  padding: 1rem;
-  margin-top: 1rem;
+.result {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
   gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e9d5ff;
 }
 
-.shortened-link-card p {
-  margin: 0;
-  font-size: 1rem;
+.result a {
+  color: #6b46c1;
+  text-decoration: none;
+  flex: 1;
+  word-break: break-all;
 }
 
-.short-link {
-  color: hsl(180, 66%, 49%);
-  font-weight: bold;
-}
-
-.copy-button {
-  background: hsl(180, 66%, 49%);
+.result button {
+  background-color: #6b46c1;
   color: white;
   border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 5px;
-  cursor: pointer;
+  border-radius: 6px;
+  padding: 0.5rem 1.5rem;
   font-weight: bold;
-  transition: background 0.3s ease;
+  cursor: pointer;
+  min-width: 100px;
 }
 
-.copy-button:hover {
-  background: hsl(180, 66%, 40%);
+.result button.copied {
+  background-color: #4c1d95;
 }
 
-.copy-button.copied {
-  background: hsl(257, 27%, 26%);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .shortener-form {
+@media (max-width: 640px) {
+  .shortener-component form {
     flex-direction: column;
   }
-
-  .shortener-form input,
-  .shortener-form button {
-    width: 100%;
-  }
-
-  .shortened-link-card {
+  
+  .result {
     flex-direction: column;
     align-items: flex-start;
+    gap: 0.8rem;
   }
-
-  .copy-button {
+  
+  .result button {
     width: 100%;
-    text-align: center;
   }
 }

@@ -1,61 +1,61 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import "../styles/Shortener.css";
 
 export default function Shortener() {
   const [url, setUrl] = useState("");
-  const [shortLink, setShortLink] = useState(null);
+  const [shortened, setShortened] = useState("");
+  const [copied, setCopied] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const handleShorten = async () => {
+  const handleShorten = async (e) => {
+    e.preventDefault();
     if (!url.trim()) {
-      setError("Please enter a valid URL");
+      setError("Please add a link");
       return;
     }
-    setError("");
+    
     setLoading(true);
-
     try {
-      const res = await fetch(`https://api.shrtco.de/v2/shorten?url=${url}`);
-      const data = await res.json();
-      if (data.ok) {
-        setShortLink(data.result.full_short_link);
-      } else {
-        setError("Failed to shorten URL");
-      }
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 800));
+      setShortened(`https://reLink/${Math.random().toString(36).substring(2, 8)}`);
+      setError("");
     } catch {
-      setError("Error connecting to API");
+      setError("Failed to shorten link");
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(shortLink);
-    alert("Link copied!");
+  const handleCopy = () => {
+    navigator.clipboard.writeText(shortened);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
-    <div style={{ textAlign: "center", padding: "2rem" }}>
+    <div className="shortener-component">
       <h2>Shorten your link</h2>
-      <input
-        type="text"
-        value={url}
-        onChange={(e) => setUrl(e.target.value)}
-        placeholder="Enter a URL"
-        style={{ padding: "0.5rem", width: "300px" }}
-      />
-      <button onClick={handleShorten} disabled={loading} style={{ marginLeft: "1rem" }}>
-        {loading ? "Shortening..." : "Shorten"}
-      </button>
-
-      {error && <p style={{ color: "red" }}>{error}</p>}
-
-      {shortLink && (
-        <div style={{ marginTop: "1rem" }}>
-          <a href={shortLink} target="_blank" rel="noreferrer">
-            {shortLink}
+      <form onSubmit={handleShorten}>
+        <input
+          type="text"
+          placeholder="Enter a URL"
+          value={url}
+          onChange={(e) => setUrl(e.target.value)}
+        />
+        <button type="submit" disabled={loading}>
+          {loading ? "Shortening..." : "Shorten"}
+        </button>
+      </form>
+      {error && <p className="error">{error}</p>}
+      {shortened && (
+        <div className="result">
+          <a href={shortened} target="_blank" rel="noopener noreferrer">
+            {shortened}
           </a>
-          <button onClick={copyToClipboard} style={{ marginLeft: "1rem" }}>
-            Copy
+          <button onClick={handleCopy} className={copied ? "copied" : ""}>
+            {copied ? "Copied!" : "Copy"}
           </button>
         </div>
       )}
