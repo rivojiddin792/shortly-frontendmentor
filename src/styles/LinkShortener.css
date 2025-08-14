@@ -1,0 +1,43 @@
+.link-shortener {
+  max-width: 700px;
+  margin: auto;
+}
+
+.input-area {
+  display: flex;
+  gap: 10px;
+}
+
+.input-area input {
+  flex: 1;
+  padding: 10px;
+}
+
+.input-area button {
+  padding: 10px 20px;
+  background: hsl(180, 66%, 49%);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.links-list {
+  margin-top: 20px;
+}
+
+.link-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.short {
+  color: hsl(180, 66%, 49%);
+}
+
+button.copied {
+  background: hsl(257, 27%, 26%);
+}
