@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import Shortener from "./components/Shortener"; // 2-qism
+import Shortener from "./components/Shortener"; 
 import Features from "./pages/Features";
 import Pricing from "./pages/Pricing";
 import Resources from "./pages/Resources";

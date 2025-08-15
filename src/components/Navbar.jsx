@@ -20,7 +20,6 @@ function Navbar() {
         </Link>
       </div>
 
-      {/* Desktop menu */}
       <ul className="navbar__links">
         <li><Link to="/features">Features</Link></li>
         <li><Link to="/pricing">Pricing</Link></li>
