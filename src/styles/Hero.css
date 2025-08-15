@@ -1,0 +1,45 @@
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4rem 8%;
+    background-color: white;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .hero__content {
+    max-width: 500px;
+  }
+  
+  .hero__content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: hsl(255, 11%, 22%);
+    line-height: 1.2;
+  }
+  
+  .hero__content p {
+    margin: 1rem 0 2rem;
+    color: hsl(257, 7%, 63%);
+    font-size: 1.1rem;
+  }
+  
+  .btn-get-started {
+    background-color: hsl(180, 66%, 49%);
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-get-started:hover {
+    background-color: hsl(180, 66%, 60%);
+  }
+  
+  .hero__image img {
+    width: 100%;
+    max-width: 600px;
+  }
+  

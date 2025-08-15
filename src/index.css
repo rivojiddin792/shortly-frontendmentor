@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff;
+    color: hsl(255, 11%, 22%);
+    line-height: 1.5;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    height: 35px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: hsl(257, 7%, 63%);
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: hsl(260, 8%, 14%);
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.login {
+    background: none;
+    border: none;
+    color: hsl(257, 7%, 63%);
+    font-weight: 500;
+}
+
+.signup {
+    background-color: hsl(180, 66%, 49%);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-weight: 600;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hero-text {
+    max-width: 500px;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.hero-text p {
+    color: hsl(257, 7%, 63%);
+    margin: 1rem 0;
+    font-size: 1.1rem;
+}
+
+.btn-get-started {
+    background-color: hsl(180, 66%, 49%);
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 25px;
+    font-weight: 600;
+}
+
+.hero-image img {
+    width: 500px;
+}
+
+.signup:hover,
+.btn-get-started:hover {
+    background-color: hsl(180, 66%, 60%);
+}

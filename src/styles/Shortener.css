@@ -1,0 +1,107 @@
+.shortener-component {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #f5f3ff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.shortener-component h2 {
+  color: #4c1d95;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.shortener-component form {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.shortener-component input {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.shortener-component input:focus {
+  outline: none;
+  border-color: #6b46c1;
+}
+
+.shortener-component button {
+  background-color: #6b46c1;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0 1.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.shortener-component button:hover {
+  background-color: #5d3aac;
+}
+
+.shortener-component button:disabled {
+  background-color: #a78bfa;
+  cursor: not-allowed;
+}
+
+.error {
+  color: #ef4444;
+  font-size: 0.9rem;
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+}
+
+.result {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e9d5ff;
+}
+
+.result a {
+  color: #6b46c1;
+  text-decoration: none;
+  flex: 1;
+  word-break: break-all;
+}
+
+.result button {
+  background-color: #6b46c1;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  min-width: 100px;
+}
+
+.result button.copied {
+  background-color: #4c1d95;
+}
+
+@media (max-width: 640px) {
+  .shortener-component form {
+    flex-direction: column;
+  }
+  
+  .result {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+  
+  .result button {
+    width: 100%;
+  }
+}
