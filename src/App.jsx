@@ -17,7 +17,7 @@ function App() {
           element={
             <>
               <Hero />
-              <Shortener /> {/* Link qisqartirish qismi */}
+              <Shortener />
             </>
           }
         />
